@@ -1,0 +1,19 @@
+= provide :title, 'New'
+
+.col-lg-6.col-lg-offset-3
+  = form_for( @user ) do |f|
+    = render 'shared/errors', object: @user
+    .form-group
+      = f.label :name, class: "form-labels"
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :email, class: "form-labels"
+      = f.email_field :email, class: 'form-control'
+    .form-group
+      = f.label :password, class: "form-labels"
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, class: "form-labels"
+      = f.password_field :password_confirmation, class: 'form-control'
+
+    = f.submit "Let's go!", class: 'btn btn-lg btn-primary'
