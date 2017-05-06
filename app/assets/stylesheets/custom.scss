@@ -18,49 +18,62 @@ h1 {
 
 .center.jumbotron {
   text-align: center;
-  margin-top: 3.5%;
+  margin-top: 10%;
   border: 1px solid #bebebe;
 }
 
+.btn.btn-lg.btn-primary {
+  margin-top: 2.5%;
+  background-color: #1aa7db;
+  &:hover {
+    background-color: #1485af;
+  }
+}
 
 /* header */
 
-.navbar.navbar-inverse.nabar-fixed-top {
+.navbar.navbar-inverse.navbar-fixed-top {
   background: #777777; 
   margin-bottom: 0px;
   font-size: 1.5em;
   text-transform: uppercase;
-  padding-right: 16.66666667%;
   border-radius: 0px;
   border: 1px solid #5f5f5f;
 }
 
-.navbar-inverse {
-  .navbar-nav > li > a {
-     color: #fff;
-     &:hover {
-       color: #1aa7db;
-       text-decoration: none;
-     }
+#first-row {
+  background: #f8f8f8;
+  #logo {
+    color: #3b3e44;
+    font-weight: bold;
+    text-transform: none;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 2em;
+    position: fixed-top;
+    text-align: left;
+    font-size: 3em;
+    &:hover {
+      color: #1aa7db;
+      text-decoration: none;
+    }
   }
 }
 
-#logo {
-  background: #f8f8f8; 
-  display: block;
-  color: #3b3e44;
-  font-weight: bold;
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-size: 2em;
-  position: fixed-top;
-  padding-left: 16.66666667%;
-  text-align: left;
-  font-size: 3em;
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
   &:hover {
     color: #1aa7db;
     text-decoration: none;
   }
+}
+
+#user-name {
+  padding-left: 16.666666667%;
+}
+
+#navigation {
+  padding-right: 16.666666667%;
 }
 
 
@@ -85,21 +98,19 @@ footer {
   }
 }
 
-/* home */
-.btn.btn-lg.btn-primary {
-  margin-top: 2.5%;
-  background-color: #1aa7db;
-  &:hover {
-    background-color: #1485af;
-  }
-}
 
-
-/* creating-user */
+/* forms */
 
 .form-labels {
-  font-size: 1.25em;
+  font-size: 1.4em;
   color: black;
   letter-spacing: 1px;
   margin-top: 2%; 
+}
+
+.form-control {
+  font-size: 1.25em;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: bold;
 }

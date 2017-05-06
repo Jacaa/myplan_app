@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id | user_path(:id)
   def show
-    @user = User.find(params[:id])
+    set_user
   end
   
   # GET /users/new | new_user_path

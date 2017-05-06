@@ -1,7 +1,16 @@
-= link_to 'MyPlan', root_path, id: 'logo'
-
-%nav.navbar.navbar-inverse.nabar-fixed-top
-  %ul.nav.navbar-nav.navbar-right
-    %li= link_to 'Home', root_path
-    %li= link_to 'About', about_path
-    %li= link_to 'Log in', '#'
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .row#first-row
+    .col-lg-4.col-lg-offset-2
+      = link_to 'MyPlan', root_path, id: 'logo'
+  .row#second-row
+    - if current_user
+      %ul.nav.navbar-nav#user-name
+        %li= link_to current_user.name, current_user
+        %li= link_to 'Settings', '#'
+    %ul.nav.navbar-nav.navbar-right#navigation
+      %li= link_to 'Home', root_path
+      %li= link_to 'About', about_path
+      - if current_user
+        %li= link_to 'Log out', logout_path, method: 'delete'
+      - else
+        %li= link_to 'Log in', login_path

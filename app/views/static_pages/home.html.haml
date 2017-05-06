@@ -1,5 +1,9 @@
-= provide :title, 'Home'
-
-%h1 Welcome to MyPlan apllication
-%h3 Sign up now and share your workout results with the world!
-= link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary"
+- if current_user
+  %h2 
+    Home page for
+    = current_user.name 
+- else
+  = provide :title, 'Home'
+  %h1 Welcome to MyPlan apllication
+  %h3 Sign up now and share your workout results with the world!
+  = link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary"
