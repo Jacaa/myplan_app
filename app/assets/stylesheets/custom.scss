@@ -114,3 +114,11 @@ footer {
   letter-spacing: 1px;
   font-weight: bold;
 }
+
+input[type=checkbox] {
+  transform: scale(2);
+}
+
+label[for=remember_me] {
+  padding-left: 5%;
+}

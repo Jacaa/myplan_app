@@ -6,5 +6,11 @@ class User < ApplicationRecord
                        length: { maximum: 255 }, 
                        uniqueness: { case_sensitive: false },
                        email_format: { message: "doesn't look like an email address" }
-
+  
+  before_create { generate_token(:remember_token) }
+  
+  # Generate random token
+  def generate_token(column)
+    self[column] = SecureRandom.urlsafe_base64
+  end
 end

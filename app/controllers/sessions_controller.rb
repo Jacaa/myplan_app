@@ -6,10 +6,14 @@ class SessionsController < ApplicationController
 
   # POST /login
   def create
-    @user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email])
     # user exists in the database and password is correct
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+    if user && user.authenticate(params[:password])
+      if params[:remember_me]
+        cookies.permanent[:remember_token] = user.remember_token
+      else
+        cookies[:remember_token] = user.remember_token
+      end
       redirect_to root_url
     else
       flash.now[:danger] = "Invalid email/password"
@@ -19,8 +23,7 @@ class SessionsController < ApplicationController
 
   # DELETE /logout
   def destroy
-    session.delete(:user_id)
+    cookies.delete(:remember_token)
     redirect_to root_url
   end
-
 end

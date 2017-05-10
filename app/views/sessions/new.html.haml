@@ -10,5 +10,9 @@
     .form-group
       = label_tag :password, "Password", class: "form-labels"
       = password_field_tag :password, nil, class: "form-control" 
+    .form-group
+      = check_box_tag :remember_me, 1
+      = label_tag :remember_me, "Remember me", class: "form-labels"
+      
    
     = submit_tag "Log in", class: "btn btn-lg btn-primary"
