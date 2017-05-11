@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :user_is_logged, only: [:index, :show, :edit, :update, :destroy]
 
+  
   # GET /users | users_path
   def index
   end
@@ -19,9 +21,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome #{@user.name}! You successfully signed in!"
-      #send welcome and activation email
-      redirect_to @user
+      message = "Welcome #{@user.name}! You successfully signed in!"
+      message += " Please check your email to activate your account."
+      flash[:success] = message
+      @user.send_activation_email
+      redirect_to root_url
     else
       render 'new'
     end

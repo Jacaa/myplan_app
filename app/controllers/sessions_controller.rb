@@ -9,12 +9,17 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     # user exists in the database and password is correct
     if user && user.authenticate(params[:password])
-      if params[:remember_me]
-        cookies.permanent[:remember_token] = user.remember_token
+      if user.activated
+        if params[:remember_me]
+          cookies.permanent[:remember_token] = user.remember_token
+        else
+          cookies[:remember_token] = user.remember_token
+        end
+        redirect_to root_url
       else
-        cookies[:remember_token] = user.remember_token
+        flash[:danger] = "Account not activated. Check your email."
+        redirect_to root_url 
       end
-      redirect_to root_url
     else
       flash.now[:danger] = "Invalid email/password"
       render 'new'

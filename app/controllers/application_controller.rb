@@ -1,17 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include UsersHelper
 
-private 
-
-    # Return the current user
-    def current_user
-      @current_user ||= User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token]
+  private 
+  
+    # Before filter
+    def user_is_logged
+      unless logged_in?
+        flash[:warning] = "Please log in."
+        redirect_to login_path
+      end
     end
-
-    # Returns true if user is logged on
-    def logged_in?
-      !current_user.nil?
-    end
-    
-    helper_method :current_user
 end
