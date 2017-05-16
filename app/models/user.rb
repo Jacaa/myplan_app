@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+  validate :avatar_size
   has_secure_password
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
   validates :name,     presence: true, length: { maximum: 40 }
@@ -15,7 +17,7 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
   
-  # Check correctness of given token.
+  # Check correctness of given token
   def authenticated?(token)
     self[:activation_token] == token ? true : false
   end
@@ -27,8 +29,15 @@ class User < ApplicationRecord
 
   private
   
-    # Generate random token.
+    # Generate random token
     def generate_token(column)
       self[column] = SecureRandom.urlsafe_base64
+    end
+
+    # Validate size of the avatar
+    def avatar_size
+      if avatar.size > 5.megabytes
+        errors.add(:avatar, "should be less than 5MB")
+      end
     end
 end

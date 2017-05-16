@@ -6,7 +6,7 @@
     - if current_user
       %ul.nav.navbar-nav#user-name
         %li= link_to current_user.name, current_user
-        %li= link_to 'Settings', '#'
+        //%li= link_to 'Settings', '#'
     %ul.nav.navbar-nav.navbar-right#navigation
       %li= link_to 'Home', root_path
       %li= link_to 'About', about_path

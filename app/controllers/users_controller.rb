@@ -33,10 +33,18 @@ class UsersController < ApplicationController
 
   # GET /users/:id/edit | edit_user_path(:id)
   def edit
+    set_user
   end
 
   # PATCH /users/:id | user_path(:id)
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile edited"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   # DELETE /users/:id | user_path(:id)
@@ -50,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, 
+      params.require(:user).permit(:name, :email, :avatar,
                                    :password, :password_confirmation)
     end
 end

@@ -30,6 +30,10 @@ h1 {
   }
 }
 
+.alert {
+  font-size: 1.3em;
+}
+
 /* header */
 
 .navbar.navbar-inverse.navbar-fixed-top {
@@ -122,3 +126,31 @@ input[type=checkbox] {
 label[for=remember_me] {
   padding-left: 5%;
 }
+
+/* user */
+.row.user-info {
+  margin-top: 5%;
+  text-align: left;
+  li {
+    list-style: none;
+    font-size: 1.35em;
+  }
+  img {
+    float: left;
+    margin-right: 5%;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    position: left;
+  }
+}
+
+/* edit user */
+
+input#user_avatar {
+  display: inline;
+  margin-left: 10%;
+  transform: scale(1.3);
+}
+
