@@ -1,0 +1,14 @@
+= provide :title, 'Users'
+
+%h1 All Users
+%ul.users-list
+  - @users.each do |user|
+    %li
+      = check_avatar user
+      = user.name
+      |
+      = user.email
+      - unless admin?(user)
+        |
+        = link_to "delete", user, method: :delete, 
+          data: { confirm: "Are you sure?" }

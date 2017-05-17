@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517145454) do
+ActiveRecord::Schema.define(version: 20170517213348) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170517145454) do
     t.string   "avatar"
     t.string   "reset_token"
     t.datetime "reset_sent_at"
+    t.boolean  "admin",            default: false
   end
 
 end

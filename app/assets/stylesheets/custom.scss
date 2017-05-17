@@ -154,3 +154,14 @@ input#user_avatar {
   transform: scale(1.3);
 }
 
+
+/* users */ 
+
+ul.users-list {
+  text-align: left;
+  li {
+   list-style: none;
+   margin-top: 4%;
+  }
+
+}

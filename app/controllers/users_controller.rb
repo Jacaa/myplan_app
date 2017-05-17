@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   # GET /users | users_path
   def index
+    @users = User.where(activated: true)
   end
 
   # GET /users/:id | user_path(:id)
@@ -49,9 +50,14 @@ class UsersController < ApplicationController
 
   # DELETE /users/:id | user_path(:id)
   def destroy
+    path = if admin?(current_user) 
+             users_url
+           else 
+             root_url
+           end
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to root_url
+    redirect_to path
   end
 
   private

@@ -19,4 +19,8 @@ module SessionsHelper
   def correct_user(user)
     user == current_user
   end
+
+  def admin?(user)
+    user.admin if user
+  end
 end
