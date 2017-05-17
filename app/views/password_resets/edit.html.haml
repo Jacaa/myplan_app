@@ -1,0 +1,17 @@
+= provide :title, 'Reset password'
+
+%h1 Set new password
+
+.col-lg-6.col-lg-offset-3
+  = form_for(@user, url: password_reset_path(params[:id])) do |f|
+    = render 'shared/errors', object: @user
+    .form-group
+      = f.label :password, class: "form-labels"
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, class: "form-labels"
+      = f.password_field :password_confirmation, class: "form-control"
+      
+      = hidden_field_tag :email, @user.email
+
+    = f.submit "Set new password", class: "btn btn-lg btn-primary"

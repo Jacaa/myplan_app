@@ -12,21 +12,32 @@ class User < ApplicationRecord
   before_create { generate_token(:remember_token) }
   before_create { generate_token(:activation_token) }
   
-  # Sends an activation email
+  # Send an activation email
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
   
-  # Check correctness of given token
-  def authenticated?(token)
-    self[:activation_token] == token ? true : false
+  # Send a password reset email
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
   end
 
-  # Activates an account.
+  # Set password reset token
+  def set_reset_token
+    token = SecureRandom.urlsafe_base64
+    update_columns(reset_token: token, reset_sent_at: Time.zone.now)
+  end
+
+  # Check correctness of given token
+  def authenticated?(column, token)
+    self[column] == token ? true : false
+  end
+
+  # Activate an account
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
   end
-
+  
   private
   
     # Generate random token

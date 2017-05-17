@@ -3,7 +3,8 @@ class AccountActivationsController < ApplicationController
   # GET /account_activations/:token/edit
   def edit
     user = User.find_by_email(params[:email])
-    if user && !user.activated && user.authenticated?(params[:id])
+    if user && !user.activated && user.authenticated?(:activation_token,
+                                                      params[:id])
       user.activate
       login(user)
       flash[:success] = "Acount activated!"
