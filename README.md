@@ -1,25 +1,36 @@
-# README
+# MyPlan
 
-My first Ruby on Rails application.
+>### **My first Ruby on Rails application for learing purposes.**
+### Assumption:
+Ruby on Rails application allowing to keep your training/gym results and share it with your friends.
 
-* To be continued...
+## Details
+----
+I want to cover details in the future.
 
-Things I want to cover in the future:
+## Usage
+----
+Before first run:
+```
+bundle install
+```
 
-* Ruby version
+Then create database and initialize the database:
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
+Run RoR server:
+```
+rails server
+```
 
-* System dependencies
+## TODO
+----
+* add ability to posts and following friends
 
-* Configuration
+* add ability to save training/gym results
 
-* Database creation
+* write tests
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* :)
