@@ -5,11 +5,9 @@
 Ruby on Rails application allowing to keep your training/gym results and share it with your friends.
 
 ## Details
-----
 I want to cover details in the future.
 
 ## Usage
-----
 Before first run:
 ```
 bundle install
@@ -27,7 +25,6 @@ rails server
 ```
 
 ## TODO
-----
 * add ability to posts and following friends
 
 * add ability to save training/gym results
