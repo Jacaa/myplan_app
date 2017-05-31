@@ -11,6 +11,7 @@ class User < ApplicationRecord
   
   before_create { generate_token(:remember_token) }
   before_create { generate_token(:activation_token) }
+  has_many :microposts, dependent: :destroy
   
   # Send an activation email
   def send_activation_email

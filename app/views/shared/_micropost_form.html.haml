@@ -1,0 +1,5 @@
+= form_for(@micropost, url: microposts_path) do |f|
+  = render 'shared/errors', object: f.object
+  .field
+    = f.text_area :content, placeholder: "New post" 
+  = f.submit "Post", class: 'btn btn-lg btn-primary' 

@@ -1,16 +1,28 @@
 = provide :title, @user.name
-%h1 My profile
+
 .row.user-info
   .col-lg-6
-    = check_avatar @user
+    = avatar @user
     %ul
-      %li= @user.name
-      %li= @user.email
-      %li= @user.activated_at.strftime("Member since: %d %B %Y")
+      %span.name
+        %li= @user.name
+      %span.email
+        %li= @user.email
+      %span.member-since
+        %li= @user.activated_at.strftime("Member since: %d %B %Y")
   .col-lg-4.col-lg-offset-2
-    = link_to "Edit my profile", edit_user_path(@user),
-      class: "btn btn-lg btn-primary"
-    - if correct_user(@user)
-      = link_to "Delete my profile", user_path(@user), 
-        class: "btn btn-lg btn-primary", method: :delete,
-        data: { confirm: "Are you sure?" }
+    - unless admin?(current_user)
+      - if correct_user(@user)
+        = link_to "Edit my profile", edit_user_path(@user),
+          class: "btn btn-lg btn-primary"
+        = link_to "Delete my profile", user_path(@user), 
+          class: "btn btn-lg btn-primary", method: :delete,
+          data: { confirm: "Are you sure?" }
+- if @user.microposts.any?
+  .row.posts
+    .col-lg-6
+      %h3.micropost-count
+        Posts -
+        = @user.microposts.count
+      %ul.microposts
+        = render @microposts

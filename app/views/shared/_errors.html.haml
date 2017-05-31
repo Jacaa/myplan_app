@@ -1,7 +1,7 @@
-- if @user.errors.any?
+- if object.errors.any?
   .alert.alert-danger
     %h3 
       Try again - 
-      = pluralize @user.errors.count, 'error'
-    - @user.errors.full_messages.each do |err|
+      = pluralize object.errors.count, 'error'
+    - object.errors.full_messages.each do |err|
       %h5= err

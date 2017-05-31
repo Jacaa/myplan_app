@@ -24,3 +24,10 @@ User.create!(name: "Jacek Admin",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+# Create microposts
+users = User.all
+5.times do |n|
+  content = "Hello world number #{n}"
+  users.each { |user| user.microposts.create!(content: content)}
+end 

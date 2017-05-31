@@ -4,7 +4,7 @@
 
 .col-lg-6.col-lg-offset-3
   = form_for(@user) do |f|
-    = render 'shared/errors', object: @user
+    = render 'shared/errors', object: f.object
     .form-group
       = f.label :name, class: "form-labels"
       = f.text_field :name, class: 'form-control'

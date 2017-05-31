@@ -1,7 +1,12 @@
 - if logged_in?
-  %h2 
-    Home page for
-    = current_user.name 
+  .row
+    .col-lg-3
+      = avatar current_user
+      %h4= current_user.name
+    .col-lg-6.col-lg-offset-1
+      = render 'shared/micropost_form'
+  .row.posts.col-lg-6.col-lg-offset-3
+    = render 'shared/posts'
 - else
   = provide :title, 'Home'
   %h1 Welcome to MyPlan apllication

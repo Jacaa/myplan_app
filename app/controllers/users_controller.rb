@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_is_logged, only: [:index, :show, :edit, :update, :destroy]
-
+  before_action :set_user, only: [:show, :update, :edit]
   
   # GET /users | users_path
   def index
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id | user_path(:id)
   def show
-    set_user
+    @microposts = @user.microposts
   end
   
   # GET /users/new | new_user_path
@@ -39,7 +39,6 @@ class UsersController < ApplicationController
 
   # PATCH /users/:id | user_path(:id)
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile edited"
       redirect_to @user
