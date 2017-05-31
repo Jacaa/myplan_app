@@ -59,6 +59,14 @@ class UsersController < ApplicationController
     redirect_to path
   end
 
+  # GET /users/id/following | following_user_path(id)
+  def following
+  end
+
+  # GET /users/id/followers | followers_user_path(id)
+  def followers
+  end
+  
   private
 
     def set_user

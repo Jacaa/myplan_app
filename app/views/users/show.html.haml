@@ -10,7 +10,10 @@
         %li= @user.email
       %span.member-since
         %li= @user.activated_at.strftime("Member since: %d %B %Y")
+      %span.stats
+        %li= render 'shared/stats'
   .col-lg-4.col-lg-offset-2
+    = render 'follow_form'
     - unless admin?(current_user)
       - if correct_user(@user)
         = link_to "Edit my profile", edit_user_path(@user),

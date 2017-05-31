@@ -5,10 +5,10 @@
   - @users.each do |user|
     %li
       = avatar user
-      = user.name
+      = link_to user.name, user
       |
       = user.email
-      - unless admin?(user)
+      - if admin?(current_user)
         |
         = link_to "delete", user, method: :delete, 
           data: { confirm: "Are you sure?" }
