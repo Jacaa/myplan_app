@@ -12,7 +12,16 @@ class User < ApplicationRecord
   before_create { generate_token(:remember_token) }
   before_create { generate_token(:activation_token) }
   has_many :microposts, dependent: :destroy
-  
+  has_many :following_relationships, class_name: "Relationship",
+                                     foreign_key: "follower_id",
+                                     dependent: :destroy
+  has_many :followers_relationships, class_name: "Relationship",
+                                     foreign_key: "followed_id",
+                                     dependent: :destroy
+  has_many :following, through: :following_relationships, source: :followed
+  has_many :followers, through: :followers_relationships
+
+
   # Send an activation email
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
@@ -37,6 +46,21 @@ class User < ApplicationRecord
   # Activate an account
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
+  end
+
+  # Follow a user
+  def follow(user)
+    following << user
+  end
+
+  # Unfollow a user
+  def unfollow(user)
+    following.delete(user)
+  end
+
+  # True if current user is following the other user
+  def following?(user)
+    following.include?(user)
   end
   
   private
