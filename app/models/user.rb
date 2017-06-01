@@ -63,6 +63,14 @@ class User < ApplicationRecord
     following.include?(user)
   end
   
+  # Return all microposts of current user and following users
+  def posts
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
   private
   
     # Generate random token

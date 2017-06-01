@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_is_logged, only: [:index, :show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :update, :edit]
+  before_action :set_user, only: [:show, :update, :edit, :following, :followers]
   
   # GET /users | users_path
   def index
@@ -61,10 +61,16 @@ class UsersController < ApplicationController
 
   # GET /users/id/following | following_user_path(id)
   def following
+    @title = "Following"
+    @users = @user.following
+    render "friends"
   end
 
   # GET /users/id/followers | followers_user_path(id)
   def followers
+    @title = "Followers"
+    @users = @user.followers
+    render "friends"
   end
   
   private

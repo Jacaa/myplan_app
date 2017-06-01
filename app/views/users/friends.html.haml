@@ -1,0 +1,24 @@
+= provide :title, @user.name
+.row.user-info
+  .col-lg-6
+    = avatar @user
+    %ul
+      %span.name
+        %li= @user.name
+      %span.email
+        %li= @user.email
+      %span.member-since
+        %li= @user.activated_at.strftime("Member since: %d %B %Y")
+      %span.stats
+        %li= render 'shared/stats'
+.row
+  .col-lg-8
+    - if @users.any?
+      %h3= @title
+      %ul.users-list
+        - @users.each do |user|
+          %li
+            = avatar user
+            = link_to user.name, user
+            |
+            = user.email
