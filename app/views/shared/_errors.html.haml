@@ -3,5 +3,5 @@
     %h3 
       Try again - 
       = pluralize object.errors.count, 'error'
-    - object.errors.full_messages.each do |err|
-      %h5= err
+    - object.errors.full_messages.each do |error|
+      %h5= error

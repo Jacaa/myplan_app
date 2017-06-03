@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       @user.send_activation_email
       redirect_to root_url
     else
-      render 'new'
+      render "new"
     end
   end
 

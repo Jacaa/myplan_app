@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
 
-  # GET /login
-  def new
-  end
-
   # POST /login
   def create
     user = User.find_by_email(params[:email])
@@ -21,8 +17,8 @@ class SessionsController < ApplicationController
         redirect_to root_url 
       end
     else
-      flash.now[:danger] = "Invalid email/password"
-      render 'new'
+      flash[:danger] = "Invalid email or password"
+      redirect_to root_url
     end
   end
 

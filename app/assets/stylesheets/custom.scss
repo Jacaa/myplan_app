@@ -3,37 +3,80 @@
 
 
 /* universal */
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
 body {
-  background: #eeeeee;  
-  .container {
-    padding-top: 20px;
+  background: white;
+  .container-fluid {
+    min-height: 70%;
+    background-color: #666666;
   }
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-}
-
-.center.jumbotron {
-  text-align: center;
-  margin-top: 10%;
-  border: 1px solid #bebebe;
-}
-
-.btn.btn-lg.btn-primary {
-  margin-top: 2.5%;
-  background-color: #1aa7db;
-  &:hover {
-    background-color: #1485af;
+  .container-fluid#container-100ph {
+    min-height: 100%;
+    background-color: #666666;
   }
 }
 
 .alert {
-  font-size: 1.3em;
+  font-size: 1.2em;
+  margin: 5%;
+  text-align: center;
 }
 
+
+/* home page */
+
+.left-column{
+  float: left;
+  width: 62%;
+}
+
+.right-column {
+  float: left;
+  width: 38%;
+}
+
+.welcome {
+  margin-left: 10%;
+  margin-top: 10%;
+  color: white;
+  font-weight: bold;
+  img, h1{
+    float: left;
+    font-weight: bold;
+  }
+  p {
+    font-size: 1.5em;
+    margin: 0 10% 0 25%;
+  }
+}
+
+
+
+/* login-signup form */
+
+.login-form {
+  margin: 15% 10% 5% 5%;
+  padding-top: 3%;
+  background-color: white;
+  box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.47);
+}
+
+.signup-form {
+  margin: 0 25% 5% 25%;
+  width: 50%;
+  padding-top: 3%;
+  background-color: white;
+  box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.47);
+}
+
+h3#login {
+  text-align: center;
+  color: white;
+}
 /* header */
 
 .navbar.navbar-inverse.navbar-fixed-top {
@@ -84,56 +127,120 @@ h1 {
 /* footer */
 
 .contact-icons {
-  height: 32px;
-  width: 32px;
+  height: 26px;
+  width: 26px;
 }
 
 footer {
+  width: 90%;
+  margin: 5% 5%;
   margin-top: 15px;
   padding-top: 5px;
-  border-top: 1px solid #bebebe;
-  ul {
-    list-style: none;
-    float: right;
-    li {
-      float: left;
-      margin-left: 10px;
-    }
+  border-top: 2px solid #666666;
+}
+.about {
+  margin-left: 10%;
+}
+
+.contact {
+  float: right;
+  margin-right: 10%;
+  span {
+    display: block;
+    margin-left: 30%;
   }
 }
 
-
 /* forms */
 
-.form-labels {
-  font-size: 1.4em;
-  color: black;
-  letter-spacing: 1px;
-  margin-top: 2%; 
-}
-
-.form-control {
-  font-size: 1.25em;
-  color: black;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
-
 input[type=checkbox] {
-  transform: scale(2);
+  display: none;
 }
 
-label[for=remember_me] {
-  padding-left: 5%;
+input[type=checkbox] + label:before {
+  transform: scale(1.3);
+  content: "";  
+  display: inline-block;  
+  width: 15px;  
+  height: 15px;  
+  vertical-align: middle;
+  margin-right: 8px;  
+  background-color: #aaa;  
+  box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
+  border-radius: 4px;  
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "\2714"; /* Tick */
+    color: #1aa7db;
+    background-color: white; 
+    text-align: center;
+    line-height: 15px;
+    text-shadow: 0px 0px 3px #eee;
 }
 
 textarea {
   width: 100%;
   height: 7em;
   font-size: 1.35em;
+  resize: none;
+  &:focus {
+    background-color: red;
+  }
 }
 
+
+.form {
+  padding: 10px 0px;
+  margin: 0 10%;
+  span {
+    display: block;
+  }
+}
+
+.label-form {
+  color: #666666;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.input-form {
+  width: 100%;
+  font-size: 1.5em;
+  line-height: 1.2em;
+  padding-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  background: transparent;
+  outline: none;
+  &:focus {
+    border-bottom: 2px solid #1aa7db;
+  }
+}
+
+.btn {
+  background: #3498db;
+  border-radius: 0px;
+  color: #ffffff;
+  font-size: 21px;
+  padding: 9px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#login-btn, #signup-btn {
+  margin: 5% 25%;
+  width: 50%;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
 /* user */
+
 .row.user-info, .row.posts {
   margin-top: 5%;
   text-align: left;
