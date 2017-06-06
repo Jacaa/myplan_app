@@ -4,6 +4,8 @@
 ### Assumption:
 Ruby on Rails application allowing to keep your training/gym results and share it with your friends.
 
+![Image_app](/app/assets/images/home.png)
+
 ## Details
 I want to cover details in the future.
 

@@ -1,0 +1,16 @@
+%center
+  = avatar @user
+  .name
+    = link_to @user.name, @user
+  .stats
+    = render 'shared/stats'
+  .training
+    %strong 10 
+    trainings
+  .posts-number
+    %strong= @user.microposts.count
+    posts
+  .email
+    = @user.email
+  .member-since
+    = @user.activated_at.strftime("Member since: %d %B %Y")

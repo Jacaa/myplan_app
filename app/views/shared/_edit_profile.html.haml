@@ -1,0 +1,32 @@
+- unless admin?(current_user)
+  - if correct_user(@user)
+    %h4 Settings
+    = form_for(@user) do |f|
+      = render 'shared/errors', object: @user
+      .form
+        = f.label :name, class: "label-form"
+        = f.text_field :name, class: "input-form"
+      .form
+        = f.label :email, class: "label-form"
+        = f.email_field :email, class: "input-form"
+      .form
+        = f.label :password, class: "label-form"
+        = f.password_field :password, class: "input-form"
+      .form
+        = f.label :password_confirmation, class: "label-form"
+        = f.password_field :password_confirmation, class: "input-form"
+      .form
+        = f.label :avatar, class: "label-form"
+        = f.file_field :avatar, accept: 'image/jpeg, image/png, image/gif'
+      = f.submit 'Edit my profile', class: "btn form-btn"
+    = link_to "Delete my profile", user_path(@user), 
+    class: "btn form-btn", id: "delete-btn", method: :delete,
+    data: { confirm: "Are you sure?" }
+
+:javascript
+  $('#user_avatar').bind('change', function(){
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5){
+      alert('Maximum filse size is 5MB. Please choose a smaller file');
+    }
+  });

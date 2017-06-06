@@ -1,31 +1,23 @@
 = provide :title, @user.name
 
-.row.user-info
-  .col-lg-6
-    = avatar @user
-    %ul
-      %span.name
-        %li= @user.name
-      %span.email
-        %li= @user.email
-      %span.member-since
-        %li= @user.activated_at.strftime("Member since: %d %B %Y")
-      %span.stats
-        %li= render 'shared/stats'
-  .col-lg-4.col-lg-offset-2
-    = render 'follow_form'
-    - unless admin?(current_user)
-      - if correct_user(@user)
-        = link_to "Edit my profile", edit_user_path(@user),
-          class: "btn btn-lg btn-primary"
-        = link_to "Delete my profile", user_path(@user), 
-          class: "btn btn-lg btn-primary", method: :delete,
-          data: { confirm: "Are you sure?" }
-- if @user.microposts.any?
-  .row.posts
-    .col-lg-6
-      %h3.micropost-count
-        Posts -
-        = @user.microposts.count
-      %ul.microposts
-        = render @microposts
+.container-fluid.logged-in
+  .row#show
+    = render "shared/header"
+    .column-1
+      - unless correct_user(@user)
+        .user-info#less-info
+          = render "shared/user_info"
+        .follow
+          = render "follow_form"
+      - else
+        .user-info
+          = render "shared/user_info"
+    .column-2
+      .activity
+        .trainings
+
+        .posts
+          = render "shared/posts"
+    .column-3
+      = render "shared/flash_error"
+      = render "shared/edit_profile"

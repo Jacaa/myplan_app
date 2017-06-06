@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @micropost = current_user.microposts.build 
       @posts = current_user.posts
+      @user = current_user
     end
   end
 

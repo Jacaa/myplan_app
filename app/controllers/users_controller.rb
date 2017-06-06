@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   # GET /users | users_path
   def index
     @users = User.where(activated: true)
+    @user = current_user
   end
 
   # GET /users/:id | user_path(:id)
   def show
-    @microposts = @user.microposts
+    @posts = @user.microposts
   end
   
   # GET /users/new | new_user_path
@@ -34,7 +35,6 @@ class UsersController < ApplicationController
 
   # GET /users/:id/edit | edit_user_path(:id)
   def edit
-    set_user
   end
 
   # PATCH /users/:id | user_path(:id)
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile edited"
       redirect_to @user
     else
-      render 'edit'
+      render 'show'
     end
   end
 

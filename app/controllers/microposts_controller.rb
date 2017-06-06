@@ -7,7 +7,8 @@ class MicropostsController < ApplicationController
       flash[:success] = "Post created"
       redirect_to root_url
     else
-      render 'static_pages/home'
+      flash[:danger] = "Content has over 140 characters. Try again!"
+      redirect_to controller: :static_pages, action: :home
     end
   end
 

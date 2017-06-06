@@ -1,18 +1,26 @@
 - if logged_in?
-  = render "shared/header"
-  .row
-    .col-lg-3
-      = avatar current_user
-      %h4= current_user.name
-      = render "shared/stats"
-    .col-lg-6.col-lg-offset-1
-      = render "shared/micropost_form"
-  .row.posts.col-lg-6.col-lg-offset-3
-    = render "shared/posts"
+  .container-fluid.logged-in
+    .row#home-logged
+      = render "shared/header"
+      .column-1
+        .user-info
+          = render "shared/user_info"    
+      .column-2
+        .last-training
+          = link_to "Add training", "/", class: "btn form-btn"
+
+
+        .training-calender
+
+      .column-3
+        .post-form
+          = render "shared/flash_error"
+          = render "shared/micropost_form"
+        .posts
+          = render "shared/posts"
 - else
-  .container-fluid
+  .container-fluid.non-logged-in
     .row
-      = provide :title, "Home"
       .left-column
         .welcome
           = image_tag "logo.png"
@@ -25,3 +33,4 @@
       .right-column
         = render "shared/login_form"
   = render "shared/footer"
+

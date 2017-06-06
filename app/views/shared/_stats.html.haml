@@ -1,6 +1,13 @@
-- @user ||= current_user
-.stats
+- user = @user ||= current_user
+- if correct_user(user)
   %strong#following= @user.following.count
   = link_to 'following', following_user_path(@user)
   %strong#followers= @user.followers.count
   = link_to 'followers', followers_user_path(@user)
+- else
+  %strong#following
+    = @user.following.count
+  following
+  %strong#followers
+    = @user.followers.count
+  followers

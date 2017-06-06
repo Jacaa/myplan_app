@@ -1,3 +1,11 @@
 = provide :title, 'About'
-%h1 About app
+.container-fluid.non-logged-in
+  .row
+    %center
+      %h1{style: "color: #fff"} About app
+    %h3#login
+      Back to
+      = link_to "login", root_url, class: "btn"
+= render "shared/footer"
+
 

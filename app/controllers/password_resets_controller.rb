@@ -14,7 +14,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Check your email for further steps"
       redirect_to root_url
     else
-      flash[:danger] = "Email not found"
+      flash.now[:danger] = "Email not found"
       render "new"
     end
   end
@@ -30,16 +30,16 @@ class PasswordResetsController < ApplicationController
       redirect_to new_password_reset_path
     elsif params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
-      render 'edit'
+      render "edit"
     elsif params[:user][:password].length < 5
       @user.errors.add(:password, "is too short (5 characters minimum)")
-      render 'edit'
+      render "edit"
     elsif @user.update_attributes(user_params)
       flash[:success] = "Password has been reset"
       @user.update_columns(reset_token: nil, reset_sent_at: nil)
-      redirect_to login_path
+      redirect_to root_url
     else
-      render 'new'
+      render "edit"
     end
   end
 

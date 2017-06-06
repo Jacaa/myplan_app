@@ -1,6 +1,5 @@
 .login-form
-  - flash.each do |flash_type, message|
-    .alert{ class: "alert-#{flash_type}" }= message
+  = render "shared/flash_error"
   .inputs
     = form_tag login_path do
       .form
@@ -8,10 +7,10 @@
         = email_field_tag :email, nil, class: "input-form"
       .form
         = label_tag :password, "Password:", class: "label-form"
-        = link_to "forgot password?", new_password_reset_path
+        = link_to "forgot password?", reset_path
         = password_field_tag :password, nil, class: "input-form" 
       .form
         = check_box_tag :remember_me, 1
         = label_tag :remember_me, "Remember me", class: "label-form"
         
-      = submit_tag "Log in", class: "btn", id: "login-btn"
+      = submit_tag "Log in", class: "btn form-btn"

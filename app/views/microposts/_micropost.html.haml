@@ -1,12 +1,14 @@
-%li{id: "micropost-#{micropost.id}"}
-  = link_to avatar(micropost.user), micropost.user
-  %span.user
-    %b= link_to micropost.user.name, micropost.user
-  %span.content
-    = micropost.content
-  %span.timestamp
-    Posted
-    %em= time_ago_in_words(micropost.created_at) 
-    ago.
-    - if correct_user(micropost.user)
-      = link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" }
+.post
+  %li{id: "micropost-#{micropost.id}"}
+    .avatar
+      = link_to avatar(micropost.user), micropost.user
+    .user
+      %b= link_to micropost.user.name, micropost.user
+    .content
+      %p= micropost.content
+    .timestamp
+      Posted
+      %em= time_ago_in_words(micropost.created_at) 
+      ago.
+      - if correct_user(micropost.user)
+        = link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" }
