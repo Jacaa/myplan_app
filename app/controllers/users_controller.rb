@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   # GET /users/new | new_user_path
   # Create nil user to provide @user variable for form_for
   def new
-    @user = User.new
   end
   
   # POST /users | users_path
@@ -29,7 +28,9 @@ class UsersController < ApplicationController
       @user.send_activation_email
       redirect_to root_url
     else
-      render "new"
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

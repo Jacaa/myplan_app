@@ -6,6 +6,8 @@ class StaticPagesController < ApplicationController
       @micropost = current_user.microposts.build 
       @posts = current_user.posts
       @user = current_user
+    else
+      @user = User.new
     end
   end
 

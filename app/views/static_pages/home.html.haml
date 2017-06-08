@@ -32,7 +32,20 @@
             %p Sign up now and share your workout results with the world!
             %h3#signup
               You don't have account?
-              = link_to "Sign up now!", signup_path, class: "btn"
+              = link_to 'Sign up', '#new-user-modal', {class: "btn", 'data-toggle' => 'modal'}
       .right-column
         = render "shared/login_form"
   = render "shared/footer"
+
+#modal-window.modal.fade{"role" => "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden"=>"true"}
+#new-user-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %center
+          %h4#myModalLabel.modal-title Create new user
+      .modal-body
+        = render 'users/signup_form'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
