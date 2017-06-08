@@ -1,14 +1,19 @@
 .post
   %li{id: "micropost-#{micropost.id}"}
-    .avatar
-      = link_to avatar(micropost.user), micropost.user
-    .user
-      %b= link_to micropost.user.name, micropost.user
+    .header
+      .avatar
+        = link_to avatar(micropost.user), micropost.user
+      .user
+        %b= link_to micropost.user.name, micropost.user
+      .actions
+        - if correct_user(micropost.user)
+          = link_to micropost, method: :delete, data: { confirm: "You sure?" } do 
+            %span.glyphicon.glyphicon-remove
+          = link_to edit_micropost_path(micropost), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window'} do
+            %span.glyphicon.glyphicon-pencil 
     .content
       %p= micropost.content
     .timestamp
       Posted
       %em= time_ago_in_words(micropost.created_at) 
       ago.
-      - if correct_user(micropost.user)
-        = link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" }

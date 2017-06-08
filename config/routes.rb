@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   resources :users
   resources :account_activations, only: [:edit]
-  resources :microposts,          only: [:create, :destroy]
+  resources :microposts,          only: [:edit, :update, :create, :destroy]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]
   resources :users do

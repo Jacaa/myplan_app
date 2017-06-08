@@ -27,9 +27,8 @@ rails server
 ```
 
 ## TODO
-* add ability to posts and following friends
-
+* write tests
 * add ability to save training/gym results
 
-* write tests
+
 

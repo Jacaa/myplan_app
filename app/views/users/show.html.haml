@@ -12,8 +12,11 @@
       - else
         .user-info
           = render "shared/user_info"
-    .column-2
+    .column-2.scrollable
       .activity
+        .header
+          %center
+            %h4 Activity
         .trainings
 
         .posts
@@ -21,3 +24,5 @@
     .column-3
       = render "shared/flash_error"
       = render "shared/edit_profile"
+
+#modal-window.modal.fade{"role" => "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden"=>"true"}

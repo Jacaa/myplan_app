@@ -7,11 +7,14 @@
           = render "shared/user_info"    
       .column-2
         .last-training
-          = link_to "Add training", "/", class: "btn form-btn"
-
-
+          .header
+            .add-new
+              %a{href: "/", class: "glyphicon glyphicon-plus"}
+          .training-table
+            %h4{style: "margin-left: 45%"} Last training
+            //TABLE
         .training-calender
-
+          %h4{style: "margin-left: 40%"} Training calender
       .column-3
         .post-form
           = render "shared/flash_error"
@@ -26,11 +29,10 @@
           = image_tag "logo.png"
           %h1 Welcome to MyPlan apllication
           %center
-            %p Sign in now and share your workout results with the world!
+            %p Sign up now and share your workout results with the world!
             %h3#signup
               You don't have account?
               = link_to "Sign up now!", signup_path, class: "btn"
       .right-column
         = render "shared/login_form"
   = render "shared/footer"
-
