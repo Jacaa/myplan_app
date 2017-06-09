@@ -5,7 +5,7 @@
     .column-1
       .user-info#less-info
         = render "shared/user_info"
-    .column-2
+    .column-2.scrollable
       .friends
         - if @users.any?
           %h2= @title

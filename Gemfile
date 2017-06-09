@@ -43,6 +43,8 @@ gem 'carrierwave',             '0.11.2'
 gem 'mini_magick',             '4.5.1'
 gem 'fog',                     '1.38.0'
 
+gem 'faker', '~> 1.6', '>= 1.6.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
