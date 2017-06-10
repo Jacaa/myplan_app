@@ -11,12 +11,13 @@ class MicropostsController < ApplicationController
 
   def update
     @micropost = Micropost.find(params[:id])
-    if @micropost.update_attributes(micropost_params)
-      flash[:success] = "Post edited"
-      redirect_to request.referrer || root_url
-    else
-      flash[:danger] = "Try again!"
-      redirect_to request.referrer || root_url
+    respond_to do |format|
+      if @micropost.update_attributes(micropost_params)
+        format.js
+      else
+        flash.now[:notice] = "Try again!" 
+        format.js
+      end
     end
   end
 
@@ -37,7 +38,6 @@ class MicropostsController < ApplicationController
       redirect_to root_url if @micropost.nil?
     else
       @micropost.destroy
-      flash[:success] = "Post deleted"
       redirect_to request.referrer || root_url
     end
   end

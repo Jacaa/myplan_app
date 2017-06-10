@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+
+$(document).ready(function(){
+  // Remove errors when modal is closed
+  $("#new-user-modal").on("hidden.bs.modal", function(){
+      $(this).find("#errors_div").empty();
+  });
+});

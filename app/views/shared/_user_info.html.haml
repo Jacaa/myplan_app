@@ -14,3 +14,6 @@
     = @user.email
   .member-since
     = @user.activated_at.strftime("Member since: %d %B %Y")
+  .add-new
+    %a{href: "/", class: "glyphicon glyphicon-plus"}
+    Add new

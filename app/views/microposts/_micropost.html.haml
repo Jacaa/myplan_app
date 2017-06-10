@@ -1,5 +1,6 @@
 .post
   %li{id: "micropost-#{micropost.id}"}
+    .notice
     .header
       .avatar
         = link_to avatar(micropost.user), micropost.user
@@ -9,8 +10,8 @@
         - if correct_user(micropost.user)
           = link_to micropost, method: :delete, data: { confirm: "You sure?" } do 
             %span.glyphicon.glyphicon-remove
-          = link_to edit_micropost_path(micropost), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window'} do
-            %span.glyphicon.glyphicon-pencil 
+          = link_to edit_micropost_path(micropost), {:remote => true} do
+            %span.glyphicon.glyphicon-pencil
     .content
       %p= micropost.content
     .timestamp

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email,    presence: true, 
                        length: { maximum: 255 }, 
                        uniqueness: { case_sensitive: false },
-                       email_format: { message: "doesn't look like an email address" }
+                       email_format: { message: "is invalid" }
   
   before_create { generate_token(:remember_token) }
   before_create { generate_token(:activation_token) }

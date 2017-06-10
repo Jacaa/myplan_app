@@ -1,0 +1,7 @@
+<% if @micropost.content.length > 0 %>
+  $("#micropost-<%= @micropost.id %>").children(".content").html("<%= @micropost.content %>");
+<% end %>
+
+$("#micropost-<%= @micropost.id %>").children(".notice").html("<%= flash[:notice] %>");
+
+$("#micropost-<%= @micropost.id %>").children(".notice").delay(5000).fadeOut('slow');

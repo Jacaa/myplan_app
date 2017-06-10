@@ -7,17 +7,12 @@
           = render "shared/user_info"    
       .column-2
         .last-training
-          .header
-            .add-new
-              %a{href: "/", class: "glyphicon glyphicon-plus"}
-          .training-table
-            %h4{style: "margin-left: 45%"} Last training
-            //TABLE
+          %h4{style: "margin-left: 45%"} Last training
+          //TABLE
         .training-calender
-          %h4{style: "margin-left: 40%"} Training calender
+          %h4{style: "margin-left: 40%"} Training calendar
       .column-3
         .post-form
-          = render "shared/flash_error"
           = render "shared/micropost_form"
         .posts
           = render "shared/posts"
